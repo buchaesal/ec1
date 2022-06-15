@@ -1,0 +1,29 @@
+package com.plateer.ec1.payment.factory;
+
+import com.plateer.ec1.payment.enums.PaymentType;
+import com.plateer.ec1.payment.service.PaymentService;
+import com.plateer.ec1.payment.service.impl.Inicis;
+import com.plateer.ec1.payment.service.impl.Point;
+import org.springframework.stereotype.Component;
+
+import java.util.HashMap;
+import java.util.Map;
+
+@Component
+public class PaymentServiceFactory {
+
+    private final Map<PaymentType, PaymentService> map = new HashMap<>();
+
+    public PaymentServiceFactory(Inicis inicis, Point point){
+        map.put(PaymentType.INICIS, inicis);
+        map.put(PaymentType.POINT, point);
+    }
+
+    public PaymentService getPaymentService(PaymentType type){
+        try {
+            return map.get(type);
+        }catch (NullPointerException e){
+            throw new IllegalArgumentException("해당하는 결제유형이 없습니다!");
+        }
+    }
+}
