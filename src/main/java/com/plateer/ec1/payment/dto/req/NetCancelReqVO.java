@@ -1,4 +1,4 @@
-package com.plateer.ec1.payment.dto;
+package com.plateer.ec1.payment.dto.req;
 
 import com.plateer.ec1.payment.enums.PaymentType;
 import lombok.Data;

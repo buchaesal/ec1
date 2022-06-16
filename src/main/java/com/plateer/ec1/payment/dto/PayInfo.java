@@ -1,9 +1,13 @@
 package com.plateer.ec1.payment.dto;
 
 import com.plateer.ec1.payment.enums.PaymentType;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
-@Data
+@Getter
+@Setter
+@ToString
 public class PayInfo {
     private String orrNo;
     private Long payAmount;

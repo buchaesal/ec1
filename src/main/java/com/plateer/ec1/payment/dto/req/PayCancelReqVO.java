@@ -1,4 +1,4 @@
-package com.plateer.ec1.payment.dto;
+package com.plateer.ec1.payment.dto.req;
 
 import lombok.Data;
 
