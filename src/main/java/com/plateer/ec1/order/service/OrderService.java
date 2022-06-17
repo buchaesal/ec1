@@ -11,7 +11,9 @@ import com.plateer.ec1.order.strategy.impl.FoAfterStrategy;
 import com.plateer.ec1.order.strategy.impl.GeneralDataStrategy;
 import com.plateer.ec1.payment.service.PayService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
+@Service
 @RequiredArgsConstructor
 public class OrderService {
 

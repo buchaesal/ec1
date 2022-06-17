@@ -28,7 +28,9 @@ public class OrderContext {
     }
 
     public void execute(DataStrategy dataStrategy, AfterStrategy afterStrategy, OrderRequest orderRequest){
+
         Long historyNo = orderHistoryService.insertOrderHistory(orderRequest);
+
         OrderDto dto = null;
         try {
             // validation
@@ -40,11 +42,15 @@ public class OrderContext {
             // 주문 데이터 입력
             insertOrderData(dto);
 
+            // 결제
+            payService.approve(orderRequest.getPayInfo());
+
             // 금액검증
             amountValidation(orderRequest.getOrderNo());
 
             // 후처리
             afterStrategy.call(orderRequest, dto);
+
         } catch (Exception ex) {
             log.info("error: {}", ex);
         } finally {

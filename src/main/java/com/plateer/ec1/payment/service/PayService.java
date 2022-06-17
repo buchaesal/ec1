@@ -23,7 +23,7 @@ public class PayService {
      * @return
      */
     public PayApproveResVO approve(PayInfo payInfo){
-        log.info("[PayService approve] payInfo : {}", payInfo);
+        log.info("결제 승인 - payInfo : {}", payInfo);
         PaymentService service = paymentServiceFactory.getPaymentService(payInfo.getPaymentType());
         service.validateAuth(payInfo);
         return service.approvePay(payInfo);

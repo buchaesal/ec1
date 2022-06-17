@@ -6,7 +6,9 @@ import com.plateer.ec1.promotion.calculation.impl.PriceDiscountCalculation;
 import com.plateer.ec1.promotion.calculation.impl.ProductCouponCalculation;
 import com.plateer.ec1.promotion.dto.req.RequestPromotionVO;
 import com.plateer.ec1.promotion.enums.PromotionType;
+import org.springframework.stereotype.Component;
 
+@Component
 public class CalculationFactory {
 
     public Calculation getPromotionCalculationData(PromotionType type){
