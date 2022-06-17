@@ -4,6 +4,7 @@ import com.plateer.ec1.payment.dto.*;
 import com.plateer.ec1.payment.dto.req.NetCancelReqVO;
 import com.plateer.ec1.payment.dto.req.PayCancelReqVO;
 import com.plateer.ec1.payment.dto.res.PayApproveResVO;
+import com.plateer.ec1.payment.enums.PaymentType;
 import com.plateer.ec1.payment.factory.PaymentServiceFactory;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -33,6 +34,7 @@ public class PayService {
      * @param reqVO
      */
     public void cancel(PayCancelReqVO reqVO){
+        log.info("결제 취소 요청 - PayCancelReqVO : {}", reqVO);
         OriginalOrder originalOrder = getOriginalOrder(reqVO);
         paymentServiceFactory.getPaymentService(originalOrder.getPaymentType()).cancelPay(originalOrder);
     }
@@ -43,8 +45,10 @@ public class PayService {
      * @return
      */
     private OriginalOrder getOriginalOrder(PayCancelReqVO reqVO){
-        log.info("[PayService getOriginalOrder] PayCancelReqVO : {}", reqVO);
-        return new OriginalOrder();
+        log.info("원 주문 조회");
+        OriginalOrder originalOrder = new OriginalOrder();
+        originalOrder.setPaymentType(PaymentType.INICIS);
+        return originalOrder;
     }
 
     /**

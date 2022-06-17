@@ -6,4 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class OrderRequest {
+    private String orderType;
+    private String systemType;
+    private String orderNo;
 }

@@ -5,6 +5,10 @@ import com.plateer.ec1.order.dto.OrderRequest;
 import com.plateer.ec1.order.repository.OrderRepository;
 import com.plateer.ec1.order.strategy.AfterStrategy;
 import com.plateer.ec1.order.strategy.DataStrategy;
+import com.plateer.ec1.order.strategy.impl.BoAfterStrategy;
+import com.plateer.ec1.order.strategy.impl.EcouponDataStrategy;
+import com.plateer.ec1.order.strategy.impl.FoAfterStrategy;
+import com.plateer.ec1.order.strategy.impl.GeneralDataStrategy;
 import com.plateer.ec1.payment.service.PayService;
 import lombok.RequiredArgsConstructor;
 
@@ -21,12 +25,29 @@ public class OrderService {
     }
 
     private DataStrategy getDataStrategy(OrderRequest orderRequest){
-        return null;
+
+        DataStrategy dataStrategy = null;
+
+        if ("general".equals(orderRequest.getOrderType())){
+            dataStrategy = new GeneralDataStrategy();
+        }else if ("ecoupon".equals(orderRequest.getOrderType())){
+            dataStrategy = new EcouponDataStrategy();
+        }
+
+        return dataStrategy;
     }
 
     private AfterStrategy getAfterStrategy(OrderRequest orderRequest){
-        return null;
-    }
 
+        AfterStrategy strategy = null;
+
+        if("FO".equals(orderRequest.getSystemType())) {
+            strategy = new FoAfterStrategy();
+        } else if ("BO".equals(orderRequest.getSystemType())) {
+            strategy = new BoAfterStrategy();
+        }
+
+        return strategy;
+    }
 
 }

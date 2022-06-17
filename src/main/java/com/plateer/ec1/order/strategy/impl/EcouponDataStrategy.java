@@ -5,9 +5,11 @@ import com.plateer.ec1.order.dto.OrderProductView;
 import com.plateer.ec1.order.dto.OrderRequest;
 import com.plateer.ec1.order.strategy.DataStrategy;
 
+import java.util.List;
+
 public class EcouponDataStrategy implements DataStrategy {
     @Override
-    public OrderDto create(OrderRequest orderRequest, OrderProductView orderProductView) {
+    public OrderDto create(OrderRequest orderRequest, List<OrderProductView> viewList) {
         return null;
     }
 }

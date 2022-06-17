@@ -25,7 +25,7 @@ public class Inicis implements PaymentService {
 
     @Override
     public void cancelPay(OriginalOrder originalOrder) {
-        log.info("이니시스 취소");
+        log.info("이니시스 취소 - OriginalOrder : {}", originalOrder);
     }
 
     @Override
