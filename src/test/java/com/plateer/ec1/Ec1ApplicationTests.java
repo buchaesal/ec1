@@ -23,16 +23,25 @@ class Ec1ApplicationTests {
 	private PromotionService promotionService;
 
 	@Test
-	void contextLoads() {
-		PayInfo payInfo = new PayInfo();
-		payInfo.setPaymentType(PaymentType.INICIS);
-//		payService.cancel(new PayCancelReqVO());
+	@DisplayName("주문결제")
+	void test0(){
 
+		String[] systemTypeList = new String[]{"FO", "BO"};
+		String[] orderTypeList = new String[]{"general", "ecoupon"};
+		PayInfo payInfo = new PayInfo();
 		OrderRequest orderRequest = new OrderRequest();
-		orderRequest.setPayInfo(payInfo);
-		orderRequest.setSystemType("FO");
-		orderRequest.setOrderType("general");
-		orderService.order(orderRequest);
+
+		for (PaymentType paymentType : PaymentType.values()) {
+			for(String systemType: systemTypeList){
+				for (String orderType : orderTypeList) {
+					payInfo.setPaymentType(paymentType);
+					orderRequest.setPayInfo(payInfo);
+					orderRequest.setSystemType(systemType);
+					orderRequest.setOrderType(orderType);
+					orderService.order(orderRequest);
+				}
+			}
+		}
 
 	}
 

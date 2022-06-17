@@ -11,8 +11,10 @@ import com.plateer.ec1.order.strategy.impl.FoAfterStrategy;
 import com.plateer.ec1.order.strategy.impl.GeneralDataStrategy;
 import com.plateer.ec1.payment.service.PayService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class OrderService {
@@ -22,8 +24,10 @@ public class OrderService {
     private final PayService payService;
 
     public void order(OrderRequest orderRequest){
+        log.info("--------주문결제 시작-------- orderRequest : {}", orderRequest);
         OrderContext orderContext = new OrderContext(orderHistoryService, payService, orderRepository);
         orderContext.execute(getDataStrategy(orderRequest), getAfterStrategy(orderRequest), orderRequest);
+        log.info("--------주문결제 끝--------");
     }
 
     private DataStrategy getDataStrategy(OrderRequest orderRequest){

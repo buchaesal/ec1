@@ -3,7 +3,21 @@ package com.plateer.ec1.claim.service.creator;
 import com.plateer.ec1.claim.dto.ClaimDto;
 import com.plateer.ec1.claim.dto.ClaimModel;
 
-public class ReturnExchangeDataCreator extends ClaimDataCreator{
+import javax.annotation.PostConstruct;
+
+public class ExchangeAcceptDataCreator extends ClaimDataCreator{
+
+    private static ClaimDataCreator claimDataCreator;
+
+    @PostConstruct
+    void init(){
+        claimDataCreator = this;
+    }
+
+    public static ClaimDataCreator getInstance(){
+        return claimDataCreator;
+    }
+
     @Override
     ClaimModel getInsertClaimData(ClaimDto claimDto) {
         return null;

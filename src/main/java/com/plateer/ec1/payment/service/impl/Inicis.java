@@ -30,6 +30,7 @@ public class Inicis implements PaymentService {
 
     @Override
     public void netCancel(NetCancelReqVO netCancelReqVO) {
+        // 이니시스 가상계좌 결제 망취소 X
     }
 
 }

@@ -1,5 +1,8 @@
 package com.plateer.ec1.claim.service.helper;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class MonitoringLogHelper {
 
     public Long insertMonitoringLog(String log) {
