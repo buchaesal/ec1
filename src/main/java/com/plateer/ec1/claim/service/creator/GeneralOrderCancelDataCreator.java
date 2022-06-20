@@ -2,12 +2,14 @@ package com.plateer.ec1.claim.service.creator;
 
 import com.plateer.ec1.claim.dto.ClaimDto;
 import com.plateer.ec1.claim.dto.ClaimModel;
-import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 
-@RequiredArgsConstructor
-public class GeneralOrderCancelDataCreator extends ClaimDataCreator{
+@Slf4j
+@Component
+public class GeneralOrderCancelDataCreator implements ClaimDataCreator{
 
     private static ClaimDataCreator claimDataCreator;
 
@@ -21,12 +23,14 @@ public class GeneralOrderCancelDataCreator extends ClaimDataCreator{
     }
 
     @Override
-    ClaimModel getInsertClaimData(ClaimDto claimDto) {
+    public ClaimModel getInsertClaimData(ClaimDto claimDto) {
+        log.info("getInsertClaimData");
         return null;
     }
 
     @Override
-    ClaimModel getUpdateClaimData(ClaimDto claimDto) {
+    public ClaimModel getUpdateClaimData(ClaimDto claimDto) {
+        log.info("getUpdateClaimData");
         return null;
     }
 }

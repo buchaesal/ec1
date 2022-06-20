@@ -1,11 +1,11 @@
 package com.plateer.ec1;
 
+import com.plateer.ec1.claim.dto.ClaimDto;
+import com.plateer.ec1.claim.service.ClaimService;
 import com.plateer.ec1.order.dto.OrderRequest;
 import com.plateer.ec1.order.service.OrderService;
 import com.plateer.ec1.payment.dto.PayInfo;
-import com.plateer.ec1.payment.dto.req.PayCancelReqVO;
 import com.plateer.ec1.payment.enums.PaymentType;
-import com.plateer.ec1.payment.service.PayService;
 import com.plateer.ec1.promotion.dto.req.RequestPromotionVO;
 import com.plateer.ec1.promotion.enums.PromotionType;
 import com.plateer.ec1.promotion.service.PromotionService;
@@ -21,6 +21,8 @@ class Ec1ApplicationTests {
 	private OrderService orderService;
 	@Autowired
 	private PromotionService promotionService;
+	@Autowired
+	private ClaimService claimService;
 
 	@Test
 	@DisplayName("주문결제")
@@ -42,7 +44,14 @@ class Ec1ApplicationTests {
 				}
 			}
 		}
+	}
 
+	@Test
+	@DisplayName("클레임")
+	void test1(){
+		ClaimDto claimDto = new ClaimDto();
+		claimDto.setClaimType("GCC");
+		claimService.claim(claimDto);
 	}
 
 	@Test

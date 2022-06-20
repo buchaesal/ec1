@@ -1,7 +1,7 @@
 package com.plateer.ec1.claim.enums;
 
 import com.plateer.ec1.claim.service.creator.*;
-import com.plateer.ec1.claim.service.processor.AcceptWithdrawalProcessor;
+import com.plateer.ec1.claim.service.processor.AcceptProcessor;
 import com.plateer.ec1.claim.service.processor.CompleteProcessor;
 import com.plateer.ec1.claim.service.processor.abstracts.ClaimProcessor;
 import lombok.Getter;
@@ -16,28 +16,25 @@ import java.util.function.Supplier;
 public enum ClaimType {
 
     //일반상품주문취소완료
-    GCC(CompleteProcessor::getInstance, GeneralOrderCancelDataCreator::getInstance, Arrays.asList(), Arrays.asList(), Boolean.TRUE, ""),
+    GCC(CompleteProcessor::getInstance, GeneralOrderCancelDataCreator::getInstance, Arrays.asList()),
     //모바일쿠폰주문취소접수
-    MCA(AcceptWithdrawalProcessor::getInstance, ECouponCancelAcceptDataCreator::getInstance, Arrays.asList(), Arrays.asList(), Boolean.TRUE, ""),
+    MCA(AcceptProcessor::getInstance, ECouponCancelAcceptDataCreator::getInstance, Arrays.asList()),
     //모바일쿠폰주문취소완료
-    MCC(CompleteProcessor::getInstance,         ECouponCancelCompleteDataCreator::getInstance, Arrays.asList(), Arrays.asList(), Boolean.FALSE, ""),
+    MCC(CompleteProcessor::getInstance, ECouponCancelCompleteDataCreator::getInstance, Arrays.asList()),
     //반품접수
-    RA(CompleteProcessor::getInstance,          ReturnAcceptDataCreator::getInstance, Arrays.asList(), Arrays.asList(), Boolean.TRUE, ""),
+    RA(AcceptProcessor::getInstance, ReturnAcceptDataCreator::getInstance, Arrays.asList()),
     //반품완료
-    RC(CompleteProcessor::getInstance,          ReturnCompleteDataCreator::getInstance, Arrays.asList(), Arrays.asList(), Boolean.FALSE, ""),
+    RC(CompleteProcessor::getInstance, ReturnCompleteDataCreator::getInstance, Arrays.asList()),
     //반품철회
-    RW(CompleteProcessor::getInstance,          ReturnWithdrawalDataCreator::getInstance, Arrays.asList(), Arrays.asList(), Boolean.TRUE, ""),
+    RW(AcceptProcessor::getInstance, ReturnWithdrawalDataCreator::getInstance, Arrays.asList()),
     //교환접수
-    XA(CompleteProcessor::getInstance,          ExchangeAcceptDataCreator::getInstance, Arrays.asList(), Arrays.asList(), Boolean.TRUE, ""),
+    XA(AcceptProcessor::getInstance, ExchangeAcceptDataCreator::getInstance, Arrays.asList()),
     //교환철회
-    XW(CompleteProcessor::getInstance,          ExchangeWithdrawalDataCreator::getInstance, Arrays.asList(), Arrays.asList(), Boolean.TRUE, "");
+    XW(AcceptProcessor::getInstance, ExchangeWithdrawalDataCreator::getInstance, Arrays.asList());
 
     private final Supplier<ClaimProcessor> claimProcess;
     private final Supplier<ClaimDataCreator> creator;
     private final List<String> validStatuses;
-    private final List<String> productTypes;
-    private final Boolean claimNoFlag;
-    private final String claimCode;
 
     public static ClaimDataCreator findCreator(String name) {
         return Arrays.stream(ClaimType.values())

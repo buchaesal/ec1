@@ -1,6 +1,5 @@
 package com.plateer.ec1.claim.service.helper;
 
-import com.plateer.ec1.claim.dto.ClaimModel;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -8,12 +7,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class IFCallHelper {
 
-    public void callRestoreCouponIF(ClaimModel claimModel){
-
+    public void callRestoreCouponIF(){
+        log.info("클레임 쿠폰 복원 if");
     }
 
     public void callPaymentIF(){
-        log.info("클레임 :: 결제 if 호출");
+        log.info("클레임 결제 if");
     }
 
 }
