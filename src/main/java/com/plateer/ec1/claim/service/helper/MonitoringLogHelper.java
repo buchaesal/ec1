@@ -13,7 +13,7 @@ public class MonitoringLogHelper {
     }
 
     public void updateMonitortingLog(Long id, String moniteringLog) {
-        log.info("클레임 insert 모니터링 로그 - log : {}", moniteringLog);
+        log.info("클레임 update 모니터링 로그 - log : {}", moniteringLog);
     }
 
 }

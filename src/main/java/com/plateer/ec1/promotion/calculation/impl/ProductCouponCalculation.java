@@ -5,8 +5,10 @@ import com.plateer.ec1.promotion.dto.Promotion;
 import com.plateer.ec1.promotion.dto.req.RequestPromotionVO;
 import com.plateer.ec1.promotion.dto.res.ResponseProductCouponVO;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
 @Slf4j
+@Component
 public class ProductCouponCalculation implements Calculation {
 
     @Override

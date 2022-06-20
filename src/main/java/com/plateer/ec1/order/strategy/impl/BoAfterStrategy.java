@@ -7,8 +7,10 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class BoAfterStrategy implements AfterStrategy {
+
     @Override
     public void call(OrderRequest orderRequest, OrderDto orderDto) {
         log.info("BO 주문 후처리");
     }
+
 }

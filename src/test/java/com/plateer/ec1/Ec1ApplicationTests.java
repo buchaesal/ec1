@@ -58,6 +58,7 @@ class Ec1ApplicationTests {
 	@DisplayName("프로모션")
 	void test(){
 		RequestPromotionVO request = new RequestPromotionVO();
+//		request.setPromotionType();
 
 		for (PromotionType value : PromotionType.values()) {
 			request.setPromotionType(value);

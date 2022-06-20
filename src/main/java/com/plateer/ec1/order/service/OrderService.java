@@ -32,28 +32,26 @@ public class OrderService {
 
     private DataStrategy getDataStrategy(OrderRequest orderRequest){
 
-        DataStrategy dataStrategy = null;
-
         if ("general".equals(orderRequest.getOrderType())){
-            dataStrategy = new GeneralDataStrategy();
+            return new GeneralDataStrategy();
         }else if ("ecoupon".equals(orderRequest.getOrderType())){
-            dataStrategy = new EcouponDataStrategy();
+            return new EcouponDataStrategy();
+        }else{
+            throw new IllegalArgumentException("no dataStrategy");
         }
 
-        return dataStrategy;
     }
 
     private AfterStrategy getAfterStrategy(OrderRequest orderRequest){
 
-        AfterStrategy strategy = null;
-
         if("FO".equals(orderRequest.getSystemType())) {
-            strategy = new FoAfterStrategy();
+            return new FoAfterStrategy();
         } else if ("BO".equals(orderRequest.getSystemType())) {
-            strategy = new BoAfterStrategy();
+            return new BoAfterStrategy();
+        }else{
+            throw new IllegalArgumentException("no AfterStrategy");
         }
 
-        return strategy;
     }
 
 }
