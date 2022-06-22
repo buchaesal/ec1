@@ -4,6 +4,7 @@ import com.plateer.ec1.payment.dto.req.NetCancelReqVO;
 import com.plateer.ec1.payment.dto.OriginalOrder;
 import com.plateer.ec1.payment.dto.res.PayApproveResVO;
 import com.plateer.ec1.payment.dto.PayInfo;
+import com.plateer.ec1.payment.enums.PaymentType;
 import com.plateer.ec1.payment.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -11,6 +12,10 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class Point implements PaymentService {
+
+    public PaymentType getType(){
+        return PaymentType.POINT;
+    }
 
     @Override
     public void validateAuth(PayInfo payInfo) {

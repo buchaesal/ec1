@@ -4,6 +4,7 @@ import com.plateer.ec1.payment.dto.OriginalOrder;
 import com.plateer.ec1.payment.dto.PayInfo;
 import com.plateer.ec1.payment.dto.req.NetCancelReqVO;
 import com.plateer.ec1.payment.dto.res.PayApproveResVO;
+import com.plateer.ec1.payment.enums.PaymentType;
 import com.plateer.ec1.payment.manipulator.PaymentDataManipulator;
 import com.plateer.ec1.payment.service.PaymentService;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +18,10 @@ import org.springframework.stereotype.Component;
 public class Inicis implements PaymentService {
 
 //    private final PaymentDataManipulator paymentDataManipulator;
+
+    public PaymentType getType(){
+        return PaymentType.INICIS;
+    }
 
     public void validateAuth(PayInfo payInfo) {
         log.info("이니시스 인증결과 유효성검사");
