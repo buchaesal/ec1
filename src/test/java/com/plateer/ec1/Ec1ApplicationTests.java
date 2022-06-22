@@ -8,8 +8,7 @@ import com.plateer.ec1.order.dto.OrderRequest;
 import com.plateer.ec1.order.service.OrderService;
 import com.plateer.ec1.payment.dto.PayInfo;
 import com.plateer.ec1.payment.enums.PaymentType;
-import com.plateer.ec1.payment.factory.PaymentServiceFactory;
-import com.plateer.ec1.promotion.dto.req.RequestPromotionVO;
+import com.plateer.ec1.promotion.dto.req.PromotionRequestVO;
 import com.plateer.ec1.promotion.enums.PromotionType;
 import com.plateer.ec1.promotion.service.PromotionService;
 import org.junit.jupiter.api.DisplayName;
@@ -61,7 +60,7 @@ class Ec1ApplicationTests {
 	@Test
 	@DisplayName("프로모션")
 	void test(){
-		RequestPromotionVO request = new RequestPromotionVO();
+		PromotionRequestVO request = new PromotionRequestVO();
 //		request.setPromotionType();
 
 		for (PromotionType value : PromotionType.values()) {

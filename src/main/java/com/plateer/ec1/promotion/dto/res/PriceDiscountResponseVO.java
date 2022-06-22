@@ -8,6 +8,6 @@ import java.util.List;
 
 @Getter
 @Setter
-public class ResponsePriceDcVO extends ResponseBaseVO{
+public class PriceDiscountResponseVO extends BaseResponseVO {
     private List<Product> productList;
 }

@@ -4,6 +4,6 @@ import com.plateer.ec1.promotion.dto.CouponProductVO;
 
 import java.util.List;
 
-public class ResponseCartCouponVO extends ResponseBaseVO{
+public class CartCouponResponseVO extends BaseResponseVO {
     private List<CouponProductVO> couponProductList;
 }

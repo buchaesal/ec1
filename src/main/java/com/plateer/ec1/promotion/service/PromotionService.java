@@ -1,8 +1,8 @@
 package com.plateer.ec1.promotion.service;
 
-import com.plateer.ec1.promotion.dto.req.RequestPromotionVO;
-import com.plateer.ec1.promotion.dto.res.ResponseBaseVO;
-import com.plateer.ec1.promotion.factory.CalculationFactory;
+import com.plateer.ec1.promotion.dto.req.PromotionRequestVO;
+import com.plateer.ec1.promotion.dto.res.BaseResponseVO;
+import com.plateer.ec1.promotion.factory.CalculatorFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -10,9 +10,9 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class PromotionService {
 
-    private final CalculationFactory factory;
+    private final CalculatorFactory factory;
 
-    public ResponseBaseVO getApplyData(RequestPromotionVO reqVO){
+    public BaseResponseVO getApplyData(PromotionRequestVO reqVO){
         return factory.getPromotionCalculationData(reqVO.getPromotionType()).getCalculationData(reqVO);
     }
 
