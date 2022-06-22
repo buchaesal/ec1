@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 public class Product {
     private String productNo; // 상품번호
-    private int productAmt; // 할인이 적용된 가격
+    private int productAmt; // 혜택가가 있을경우 혜택가, 없을경우 판매가
     private int productCnt; // 수량
     private String productItemNo; // 단품번호
 }

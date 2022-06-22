@@ -16,16 +16,4 @@ public class PromotionService {
         return factory.getPromotionCalculationData(reqVO.getPromotionType()).getCalculationData(reqVO);
     }
 
-//    public ResponsePriceDcVO getPriceDiscountApplyData(RequestPromotionVO reqVO){
-//        return (ResponsePriceDcVO) factory.getPromotionCalculationData(PromotionType.PRC_DC).getCalculationData(reqVO);
-//    }
-//
-//    public ResponseProductCouponVO getProductCouponApplyData(RequestPromotionVO reqVO){
-//        return (ResponseProductCouponVO) factory.getPromotionCalculationData(PromotionType.PRD_CUP).getCalculationData(reqVO);
-//    }
-//
-//    public ResponseCartCouponVO getCartCouponApplyData(RequestPromotionVO reqVO){
-//        return null;
-//    }
-
 }
