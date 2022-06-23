@@ -1,6 +1,6 @@
-package com.plateer.ec1.promotion.calculation.impl;
+package com.plateer.ec1.promotion.calculator.impl;
 
-import com.plateer.ec1.promotion.calculation.Calculator;
+import com.plateer.ec1.promotion.calculator.Calculator;
 import com.plateer.ec1.promotion.dto.ProductCouponVO;
 import com.plateer.ec1.promotion.dto.req.PromotionRequestVO;
 import com.plateer.ec1.promotion.dto.res.ProductCouponResponseVO;

@@ -3,16 +3,25 @@ package com.plateer.ec1.order.enums;
 import com.plateer.ec1.order.dto.OrderRequest;
 import com.plateer.ec1.order.dto.OrderValidationDto;
 import com.plateer.ec1.order.validator.OrderCommonValidator;
+import com.plateer.ec1.order.validator.OrderSystemValidator;
+import com.plateer.ec1.order.validator.OrderTypeValidator;
 
 import java.util.Arrays;
 import java.util.function.Predicate;
 
 public enum OrderValidator implements Predicate<OrderValidationDto> {
 
-    FO_GENERAL("FO", "general", OrderCommonValidator.commonValidator),
-    BO_GENERAL("BO", "general", OrderCommonValidator.commonValidator),
-    FO_ECOUPON("FO", "ecoupon", OrderCommonValidator.commonValidator),
-    BO_ECOUPON("BO", "ecoupon", OrderCommonValidator.commonValidator);
+    FO_GENERAL("FO", "general",
+            OrderCommonValidator.commonValidator),
+    BO_GENERAL("BO", "general",
+            OrderCommonValidator.commonValidator
+                    .and(OrderSystemValidator.isAbleBoOrder)),
+    FO_ECOUPON("FO", "ecoupon",
+            OrderCommonValidator.commonValidator
+                    .and(OrderTypeValidator.isAbleEcouponOrder)),
+    BO_ECOUPON("BO", "ecoupon",
+            OrderCommonValidator.commonValidator
+                    .and(OrderTypeValidator.isAbleEcouponOrder));
 
     private String systemCode;
     private String orderType;

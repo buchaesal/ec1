@@ -1,4 +1,4 @@
-package com.plateer.ec1.promotion.calculation;
+package com.plateer.ec1.promotion.calculator;
 
 import com.plateer.ec1.promotion.dto.req.PromotionRequestVO;
 import com.plateer.ec1.promotion.dto.res.BaseResponseVO;

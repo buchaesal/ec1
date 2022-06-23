@@ -1,6 +1,6 @@
 package com.plateer.ec1.promotion.factory;
 
-import com.plateer.ec1.promotion.calculation.Calculator;
+import com.plateer.ec1.promotion.calculator.Calculator;
 import com.plateer.ec1.promotion.enums.PromotionType;
 import org.springframework.stereotype.Component;
 

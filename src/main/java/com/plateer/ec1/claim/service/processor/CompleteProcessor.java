@@ -1,6 +1,7 @@
 package com.plateer.ec1.claim.service.processor;
 
 import com.plateer.ec1.claim.dto.ClaimDto;
+import com.plateer.ec1.claim.enums.ProcessorType;
 import com.plateer.ec1.claim.service.helper.IFCallHelper;
 import com.plateer.ec1.claim.service.helper.MonitoringLogHelper;
 import com.plateer.ec1.claim.service.manipulator.ClaimDataManipulator;
@@ -15,21 +16,11 @@ import javax.annotation.PostConstruct;
 @Component
 public class CompleteProcessor extends ClaimProcessor {
 
-    private static CompleteProcessor completeProcessor;
     private final IFCallHelper ifCallHelper;
 
     public CompleteProcessor(ClaimValidator claimValidator, MonitoringLogHelper monitoringLogHelper, ClaimDataManipulator manipulator, IFCallHelper ifCallHelper) {
         super(claimValidator, monitoringLogHelper, manipulator);
         this.ifCallHelper = ifCallHelper;
-    }
-
-    @PostConstruct
-    private void initialize() {
-        completeProcessor = this;
-    }
-
-    public static CompleteProcessor getInstance() {
-        return completeProcessor;
     }
 
     @Override
@@ -54,6 +45,11 @@ public class CompleteProcessor extends ClaimProcessor {
             monitoringLogHelper.updateMonitortingLog(logKey, "");
         }
 
+    }
+
+    @Override
+    public ProcessorType getType() {
+        return ProcessorType.COMPLETE;
     }
 
 }

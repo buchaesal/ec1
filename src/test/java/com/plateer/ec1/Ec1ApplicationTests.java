@@ -53,8 +53,7 @@ class Ec1ApplicationTests {
 	void test1(){
 		ClaimDto claimDto = new ClaimDto();
 		claimDto.setClaimType("MCA");
-		AcceptProcessor processor = (AcceptProcessor) ClaimType.findProcessor("MCA");
-		processor.test();
+		claimService.claim(claimDto);
 	}
 
 	@Test
