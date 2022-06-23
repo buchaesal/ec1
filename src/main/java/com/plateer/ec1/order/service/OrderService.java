@@ -2,6 +2,8 @@ package com.plateer.ec1.order.service;
 
 import com.plateer.ec1.order.context.OrderContext;
 import com.plateer.ec1.order.dto.OrderRequest;
+import com.plateer.ec1.order.enums.OrderSystemType;
+import com.plateer.ec1.order.enums.OrderType;
 import com.plateer.ec1.order.repository.OrderRepository;
 import com.plateer.ec1.order.strategy.AfterStrategy;
 import com.plateer.ec1.order.strategy.DataStrategy;
@@ -32,9 +34,9 @@ public class OrderService {
 
     private DataStrategy getDataStrategy(OrderRequest orderRequest){
 
-        if ("general".equals(orderRequest.getOrderType())){
+        if (OrderType.GENERAL == orderRequest.getOrderType()){
             return new GeneralDataStrategy();
-        }else if ("ecoupon".equals(orderRequest.getOrderType())){
+        }else if (OrderType.ECOUPON == orderRequest.getOrderType()){
             return new EcouponDataStrategy();
         }else{
             throw new IllegalArgumentException("no dataStrategy");
@@ -44,9 +46,9 @@ public class OrderService {
 
     private AfterStrategy getAfterStrategy(OrderRequest orderRequest){
 
-        if("FO".equals(orderRequest.getSystemType())) {
+        if(OrderSystemType.FO == orderRequest.getSystemType()) {
             return new FoAfterStrategy();
-        } else if ("BO".equals(orderRequest.getSystemType())) {
+        } else if (OrderSystemType.BO == orderRequest.getSystemType()) {
             return new BoAfterStrategy();
         }else{
             throw new IllegalArgumentException("no AfterStrategy");
