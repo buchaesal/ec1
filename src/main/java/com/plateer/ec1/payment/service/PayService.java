@@ -58,4 +58,13 @@ public class PayService {
     public void netCancel(NetCancelReqVO netCancelReqVO){
         paymentServiceFactory.getPaymentService(netCancelReqVO.getPaymentType()).netCancel(netCancelReqVO);
     }
+
+    /**
+     * 입금통보완료 수신 후, 처리
+     */
+    public void acceptDepositNotice(){
+        // 주문상태변경
+        // 결제상태변경
+    }
+
 }
